@@ -1,0 +1,15 @@
+version: '3.9'
+
+services:
+  app:
+    container_name: carts
+    build:
+      context: .
+    volumes:
+      - ./src:/app/code
+    ports:
+      - "8000:4567"
+    env_file:
+      - .env.defaults
+      - .env
+    command: sh -c "bundle exec ruby app/adapters/rest/main.rb"
